@@ -19,6 +19,11 @@ bundle agent main
       if => not( isdefined( "etc_issue_content:main.txt" ) ),
       comment => "This is the text that should be used to populate /etc/issue unless otherwise specified (e.g. via Augments)";
 
+      "inventory_text"
+        meta => { "inventory", "attribute_name=/etc/issue content" },
+        string => readfile( "/etc/issue", inf ),
+        if => fileexists( "/etc/issue" );
+
   files:
       "/etc/issue"
         content => "$(text)";

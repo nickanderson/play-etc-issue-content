@@ -8,6 +8,7 @@ A CFEngine Build module to help manage the content of =/etc/issue=.
 
   *Note:* This module will prompt for input to this variable, but it may alternatively be defined explicitly via augments.
 
+  #+Caption: Example Augments Configuration
    #+begin_src json
   {
       "variables": {
@@ -18,3 +19,8 @@ A CFEngine Build module to help manage the content of =/etc/issue=.
       }
   }
 #+end_src
+
+** Inventory
+- =/etc/issue content= :: The contents of =/etc/issue=.
+
+  *Note:* CFEngine Enterprise reports data up to 1k in size. The inventory of this content may be truncated.
