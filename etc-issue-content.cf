@@ -16,7 +16,7 @@ bundle agent main
                         "are subject to routine monitoring, interception, and search, and ",
                         "may be disclosed or used for any purpose.",
                         "$(const.n)"),
-      if => not( isdefined( "etc_issue_content:main.txt" ) ),
+      if => not( isvariable( "etc_issue_content:main.txt" ) ),
       comment => "This is the text that should be used to populate /etc/issue unless otherwise specified (e.g. via Augments)";
 
       "inventory_text"
