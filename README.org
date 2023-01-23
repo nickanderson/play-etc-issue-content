@@ -1,0 +1,20 @@
+A CFEngine Build module to help manage the content of =/etc/issue=.
+
+* Configuration
+
+** Variables
+
+- =etc_issue_content:main.txt= :: String holding the desired content of =/etc/issue=.
+
+  *Note:* This module will prompt for input to this variable, but it may alternatively be defined explicitly via augments.
+
+   #+begin_src json
+  {
+      "variables": {
+          "etc_issue_content:main.text": {
+              "value": "Hear ye! Hear ye! $(const.n)$(const.n)Access to this kingdom is restricted to those who can put Humpty Dumpty together again.",
+              "comment": "The Legal department said we had to let people know the environment is restricted."
+          }
+      }
+  }
+#+end_src

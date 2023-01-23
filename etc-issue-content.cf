@@ -1,0 +1,26 @@
+body file control
+{
+    namespace => "etc_issue_content";
+}
+
+bundle agent main
+{
+  vars:
+    "text"
+      string => concat( "You are accessing an Information System (IS) that is provided",
+                        "for authorized use only.",
+                        "$(const.n)$(const.n)",
+                        "By using this IS (which includes any device attached to this IS),",
+                        "you understand and consent that ",
+                        "Communications using, or data stored on, this IS are not private,",
+                        "are subject to routine monitoring, interception, and search, and ",
+                        "may be disclosed or used for any purpose.",
+                        "$(const.n)"),
+      if => not( isdefined( "etc_issue_content:main.txt" ) ),
+      comment => "This is the text that should be used to populate /etc/issue unless otherwise specified (e.g. via Augments)";
+
+  files:
+      "/etc/issue"
+        content => "$(text)";
+
+}

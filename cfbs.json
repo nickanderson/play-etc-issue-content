@@ -1,0 +1,30 @@
+{
+  "name": "etc-issue-content",
+  "description": "A CFEngine Build module for managing the content of /etc/issue.",
+  "type": "module-repo",
+  "provides": {
+    "etc-issue-content": {
+      "description": "This modules ensures there is a generic warning about authorized access in /etc/issue if no custom content is provided.",
+      "tags": ["management"],
+      "version": "0.2.0",
+      "by": "https://github.com/nickanderson",
+      "repo": "https://github.com/nickanderson/play-etc-issue-content",
+      "input": [
+        {
+          "type": "string",
+          "variable": "text",
+          "namespace": "etc_issue_content",
+          "bundle": "main",
+          "label": "Text",
+          "question": "What text should /etc/issue contain?"
+        }
+      ],
+      "steps": [
+          "copy etc-issue-content.cf services/cfbs/modules/etc-issue-content/etc-issue-content.cf",
+          "input etc-issue-content/input.json def.json",
+          "bundles etc_issue_content:main",
+          "policy_files services/cfbs/modules/etc-issue-content/etc-issue-content.cf"
+      ]
+    }
+  }
+}
